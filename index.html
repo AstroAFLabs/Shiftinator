@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shift Scheduler</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <style>
+    body { background-color: lemonchiffon; }
+    .container {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid black;
+      border-radius: 20px;
+      padding: 20px;
+    }
+    .table-container {
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .actions {
+      width: 150px; 
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enter Shift Details</h2><br>
+    <form id="shift-form">
+      <label for="worker-name">Worker Name:</label><br>
+      <select id="worker-name" name="workerName" class="browser-default" required>
+        <option value="">--Please choose a worker--</option>
+        <option value="Andrea Fajardo">Andrea Fajardo</option>
+        <option value="Angela Lee">Angela Lee</option>
+        <option value="Angela Zefi">Angela Zefi</option>
+        <option value="Anika Bartholomeusz">Anika Bartholomeusz</option>
+        <option value="Benjamin Roberts">Benjamin Roberts</option>
+        <option value="Bronte (Bunny) Pettman">Bronte (Bunny) Pettman</option>
+        <option value="Chaynne Humphrys">Chaynne Humphrys</option>
+        <option value="Chi Ha">Chi Ha</option>
+        <option value="Courtney Millington">Courtney Millington</option>
+        <option value="Dhara Patel">Dhara Patel</option>
+        <option value="Fernando Aranibar">Fernando Aranibar</option>
+        <option value="Gaumit Patel">Gaumit Patel</option>
+        <option value="Jarryd Humphrys">Jarryd Humphrys</option>
+        <option value="Joe Zhang">Joe Zhang</option>
+        <option value="Jose Diaz Armijo">Jose Diaz Armijo</option>
+        <option value="Julie Moore">Julie Moore</option>
+        <option value="Joseph Espejo">Joseph Espejo</option>
+        <option value="Kapil Lamichhane">Kapil Lamichhane</option>
+        <option value="Marie (Maz) Andersen">Marie (Maz) Andersen</option>
+        <option value="Muhammad Hamza">Muhammad Hamza</option>
+        <option value="Parvinder Kaur">Parvinder Kaur</option>
+        <option value="Robandeep Singh">Robandeep Singh</option>
+        <option value="Rodrigo Gomez">Rodrigo Gomez</option>
+        <option value="Rosie Kaur">Rosie Kaur</option>
+        <option value="Margerite (Rita) Gjergji">Margerite (Rita) Gjergji</option>
+        <option value="Sandy Tran">Sandy Tran</option>
+        <option value="Zachary (Zac) Gawen">Zachary (Zac) Gawen</option>
+      </select><br><br>
+
+      <label for="date">Date of Shift:</label><br>
+      <input type="date" id="date" name="date" required><br><br>
+
+      <label for="timeFrom">Time From:</label><br>
+      <select id="timeFrom" name="timeFrom" class="browser-default" required>
+        <option value="">--Please choose a time--</option>
+        <option value="00:00">00:00</option>
+        <option value="00:30">00:30</option>
+        <option value="01:00">01:00</option>
+        <option value="01:30">01:30</option>
+        <option value="02:00">02:00</option>
+        <option value="02:30">02:30</option>
+        <option value="03:00">03:00</option>
+        <option value="03:30">03:30</option>
+        <option value="04:00">04:00</option>
+        <option value="04:30">04:30</option>
+        <option value="05:00">05:00</option>
+        <option value="05:30">05:30</option>
+        <option value="06:00">06:00</option>
+        <option value="06:30">06:30</option>
+        <option value="07:00">07:00</option>
+        <option value="07:30">07:30</option>
+        <option value="08:00">08:00</option>
+        <option value="08:30">08:30</option>
+        <option value="09:00">09:00</option>
+        <option value="09:30">09:30</option>
+        <option value="10:00">10:00</option>
+        <option value="10:30">10:30</option>
+        <option value="11:00">11:00</option>
+        <option value="11:30">11:30</option>
+        <option value="12:00">12:00</option>
+        <option value="12:30">12:30</option>
+        <option value="13:00">13:00</option>
+        <option value="13:30">13:30</option>
+        <option value="14:00">14:00</option>
+        <option value="14:30">14:30</option>
+        <option value="15:00">15:00</option>
+        <option value="15:30">15:30</option>
+        <option value="16:00">16:00</option>
+        <option value="16:30">16:30</option>
+        <option value="17:00">17:00</option>
+        <option value="17:30">17:30</option>
+        <option value="18:00">18:00</option>
+        <option value="18:30">18:30</option>
+        <option value="19:00">19:00</option>
+        <option value="19:30">19:30</option>
+        <option value="20:00">20:00</option>
+        <option value="20:30">20:30</option>
+        <option value="21:00">21:00</option>
+        <option value="21:30">21:30</option>
+        <option value="22:00">22:00</option>
+        <option value="22:30">22:30</option>
+        <option value="23:00">23:00</option>
+        <option value="23:30">23:30</option>
+      </select><br><br>
+
+      <label for="timeUntil">Time Until:</label><br>
+      <select id="timeUntil" name="timeUntil" class="browser-default" required>
+        <option value="">--Please choose a time--</option>
+        <option value="00:00">00:00</option>
+        <option value="00:30">00:30</option>
+        <option value="01:00">01:00</option>
+        <option value="01:30">01:30</option>
+        <option value="02:00">02:00</option>
+        <option value="02:30">02:30</option>
+        <option value="03:00">03:00</option>
+        <option value="03:30">03:30</option>
+        <option value="04:00">04:00</option>
+        <option value="04:30">04:30</option>
+        <option value="05:00">05:00</option>
+        <option value="05:30">05:30</option>
+        <option value="06:00">06:00</option>
+        <option value="06:30">06:30</option>
+        <option value="07:00">07:00</option>
+        <option value="07:30">07:30</option>
+        <option value="08:00">08:00</option>
+        <option value="08:30">08:30</option>
+        <option value="09:00">09:00</option>
+        <option value="09:30">09:30</option>
+        <option value="10:00">10:00</option>
+        <option value="10:30">10:30</option>
+        <option value="11:00">11:00</option>
+        <option value="11:30">11:30</option>
+        <option value="12:00">12:00</option>
+        <option value="12:30">12:30</option>
+        <option value="13:00">13:00</option>
+        <option value="13:30">13:30</option>
+        <option value="14:00">14:00</option>
+        <option value="14:30">14:30</option>
+        <option value="15:00">15:00</option>
+        <option value="15:30">15:30</option>
+        <option value="16:00">16:00</option>
+        <option value="16:30">16:30</option>
+        <option value="17:00">17:00</option>
+        <option value="17:30">17:30</option>
+        <option value="18:00">18:00</option>
+        <option value="18:30">18:30</option>
+        <option value="19:00">19:00</option>
+        <option value="19:30">19:30</option>
+        <option value="20:00">20:00</option>
+        <option value="20:30">20:30</option>
+        <option value="21:00">21:00</option>
+        <option value="21:30">21:30</option>
+        <option value="22:00">22:00</option>
+        <option value="22:30">22:30</option>
+        <option value="23:00">23:00</option>
+        <option value="23:30">23:30</option>
+      </select><br><br>
+
+      <label for="company">Company:</label><br>
+      <select id="company" name="company" class="browser-default" required>
+        <option value="">--Please choose an option--</option>
+        <option value="MCH">MCH</option>
+        <option value="AGA">AGA</option>
+        <option value="ABN">ABN</option>
+      </select><br><br>
+
+      <label for="client">Client:</label><br>
+      <select id="client" name="client" class="browser-default" required>
+        <option value="">--Please choose a client--</option>
+        <option value="James N">James N</option>
+        <option value="Libby N">Libby N</option>
+        <option value="Ace N">Ace N</option>
+        <option value="Grace N">Grace N</option>
+        <option value="Milan N">Milan N</option>
+      </select><br><br>
+
+      <label for="location">--Location--</label>
+      <select id="location" name="location" class="browser-default" required>
+        <option value="">--Shift Location--</option>
+        <option value="Plympton Park">Plympton Park</option>
+        <option value="Glandore">Glandore</option>
+        <option value="Community">Community</option>
+        <option value="Remote/Online">Remote/Online</option>
+      </select><br><br>
+
+      <label for="workingWith">Working With:</label><br>
+      <select id="workingWith" name="workingWith" class="browser-default">
+        <option value="">--Please choose a worker--</option>
+        <option value="Andrea Fajardo">Andrea Fajardo</option>
+        <option value="Angela Lee">Angela Lee</option>
+        <option value="Angela Zefi">Angela Zefi</option>
+        <option value="Anika Bartholomeusz">Anika Bartholomeusz</option>
+        <option value="Benjamin Roberts">Benjamin Roberts</option>
+        <option value="Bronte (Bunny) Pettman">Bronte (Bunny) Pettman</option>
+        <option value="Chaynne Humphrys">Chaynne Humphrys</option>
+        <option value="Chi Ha">Chi Ha</option>
+        <option value="Courtney Millington">Courtney Millington</option>
+        <option value="Dhara Patel">Dhara Patel</option>
+        <option value="Fernando Aranibar">Fernando Aranibar</option>
+        <option value="Gaumit Patel">Gaumit Patel</option>
+        <option value="Jarryd Humphrys">Jarryd Humphrys</option>
+        <option value="Joe Zhang">Joe Zhang</option>
+        <option value="Jose Diaz Armijo">Jose Diaz Armijo</option>
+        <option value="Julie Moore">Julie Moore</option>
+        <option value="Joseph Espejo">Joseph Espejo</option>
+        <option value="Kapil Lamichhane">Kapil Lamichhane</option>
+        <option value="Marie (Maz) Andersen">Marie (Maz) Andersen</option>
+        <option value="Muhammad Hamza">Muhammad Hamza</option>
+        <option value="Parvinder Kaur">Parvinder Kaur</option>
+        <option value="Robandeep Singh">Robandeep Singh</option>
+        <option value="Rodrigo Gomez">Rodrigo Gomez</option>
+        <option value="Rosie Kaur">Rosie Kaur</option>
+        <option value="Margerite (Rita) Gjergji">Margerite (Rita) Gjergji</option>
+        <option value="Sandy Tran">Sandy Tran</option>
+        <option value="Zachary (Zac) Gawen">Zachary (Zac) Gawen</option>
+      </select><br><br>
+
+      <label for="workingWith2">Working With 2:</label><br>
+      <select id="workingWith2" name="workingWith2" class="browser-default">
+        <option value="">--Please choose a worker--</option>
+        <option value="Andrea Fajardo">Andrea Fajardo</option>
+        <option value="Angela Lee">Angela Lee</option>
+        <option value="Angela Zefi">Angela Zefi</option>
+        <option value="Anika Bartholomeusz">Anika Bartholomeusz</option>
+        <option value="Benjamin Roberts">Benjamin Roberts</option>
+        <option value="Bronte (Bunny) Pettman">Bronte (Bunny) Pettman</option>
+        <option value="Chaynne Humphrys">Chaynne Humphrys</option>
+        <option value="Chi Ha">Chi Ha</option>
+        <option value="Courtney Millington">Courtney Millington</option>
+        <option value="Dhara Patel">Dhara Patel</option>
+        <option value="Fernando Aranibar">Fernando Aranibar</option>
+        <option value="Gaumit Patel">Gaumit Patel</option>
+        <option value="Jarryd Humphrys">Jarryd Humphrys</option>
+        <option value="Joe Zhang">Joe Zhang</option>
+        <option value="Jose Diaz Armijo">Jose Diaz Armijo</option>
+        <option value="Julie Moore">Julie Moore</option>
+        <option value="Joseph Espejo">Joseph Espejo</option>
+        <option value="Kapil Lamichhane">Kapil Lamichhane</option>
+        <option value="Marie (Maz) Andersen">Marie (Maz) Andersen</option>
+        <option value="Muhammad Hamza">Muhammad Hamza</option>
+        <option value="Parvinder Kaur">Parvinder Kaur</option>
+        <option value="Robandeep Singh">Robandeep Singh</option>
+        <option value="Rodrigo Gomez">Rodrigo Gomez</option>
+        <option value="Rosie Kaur">Rosie Kaur</option>
+        <option value="Margerite (Rita) Gjergji">Margerite (Rita) Gjergji</option>
+        <option value="Sandy Tran">Sandy Tran</option>
+        <option value="Zachary (Zac) Gawen">Zachary (Zac) Gawen</option>
+      </select><br><br>
+
+      <input type="submit" value="Submit" class="btn"><br><br>
+      <button type="button" id="add-shift" class="btn">Add Shift</button><br><br>
+      <button type="button" id="reset-form" class="btn">Reset Form</button><br><br>
+      <button type="button" id="generate-pdf" class="btn green">Generate PDF</button><br><br>
+    </form>
+    <div class="shift-buttons">
+    </div>
+    <div id="pdf-link-container"></div>
+    <div id="shifts-to-be-added-container" class="table-container">
+      <h3>Shifts to be Added</h3>
+      <table id="shifts-table">
+        <thead>
+          <tr>
+            <th>Worker Name</th>
+            <th>Date</th>
+            <th>Time From</th>
+            <th>Time Until</th>
+            <th>Company</th>
+            <th>Client</th>
+            <th>Location</th>
+            <th>Working With</th>
+            <th>Working With 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Shifts will be populated here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="render.js"></script>
+</body>
+</html>
